@@ -1,9 +1,11 @@
 import { Icon } from "@iconify/react";
 import { useContext } from "react";
 import { songContext } from "../../contexts/songContext";
+import { pausingContext } from "../../contexts/pausingContext";
 
-const DownBar = ({ song, artist, togglePlaySound, isPaused }) => {
+const DownBar = ({ song, artist, togglePlaySound }) => {
   const { currentSong, setCurrentSong } = useContext(songContext);
+  const { isPaused, setIsPaused } = useContext(pausingContext);
 
   return (
     <div className="music-down-bar flex text-white p-4">

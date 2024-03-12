@@ -1,12 +1,13 @@
 import { useCookies } from "react-cookie";
 import Navbar from "../components/shared/Navbar";
 import Sidebar from "../components/shared/Sidebar";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import TextInput from "../components/shared/TextInput";
 import CloudinaryUpload from "../components/shared/CloudinaryUpload";
 import { makeAuthenticatedPOSTRequest } from "../utils/serverHelpers";
 import DownBar from "../components/shared/DownBar";
+import { songContext } from "../contexts/songContext";
 
 const UploadSong = () => {
   const navigate = useNavigate();
@@ -20,6 +21,7 @@ const UploadSong = () => {
 
   const [songName, setSongName] = useState("");
   const [thumbnail, setThumbnail] = useState("");
+  const { currentSong, setCurrentSong } = useContext(songContext);
 
   const handleSubmit = async () => {
     let data = { name: songName, thumbnail, track: features.url };
@@ -34,7 +36,10 @@ const UploadSong = () => {
 
   return (
     <div className="h-full w-full flex flex-col">
-      <div className="w-full flex" style={{ height: "90%" }}>
+      <div
+        className="w-full flex"
+        style={{ height: currentSong ? "90%" : "100%" }}
+      >
         <div className="h-full w-5/6">
           <Navbar />
           <div className="content w-full p-8 overflow-auto">
@@ -89,7 +94,7 @@ const UploadSong = () => {
         </div>
         <Sidebar />
       </div>
-      <DownBar />
+      {currentSong ? <DownBar /> : <></>}
     </div>
   );
 };

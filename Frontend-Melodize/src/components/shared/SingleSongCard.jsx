@@ -1,9 +1,11 @@
 import { Icon } from "@iconify/react";
 import { useContext } from "react";
 import { songContext } from "../../contexts/songContext";
+import { pausingContext } from "../../contexts/pausingContext";
 
 const SingleSongCard = ({ name, thumbnail, track, artist, playSound }) => {
   const { currentSong, setCurrentSong } = useContext(songContext);
+  const { isPaused, setIsPaused } = useContext(pausingContext);
 
   return (
     <div className="singleSongCard flex justify-between text-white mt-5 items-center p-2 rounded-lg px-4">
@@ -12,6 +14,7 @@ const SingleSongCard = ({ name, thumbnail, track, artist, playSound }) => {
           onClick={(event) => {
             event.preventDefault();
             setCurrentSong({ name, thumbnail, track, artist });
+            setIsPaused(false);
             playSound(track);
           }}
           className="songCardImage w-12 h-12 rounded-md mr-2 flex justify-center items-center"

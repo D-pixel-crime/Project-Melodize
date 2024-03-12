@@ -6,11 +6,13 @@ import Navbar from "../components/shared/Navbar";
 import Sidebar from "../components/shared/Sidebar";
 import DownBar from "../components/shared/DownBar";
 import { songContext } from "../contexts/songContext";
+import { pausingContext } from "../contexts/pausingContext";
 
 const MyMusic = () => {
   const [songData, setSongData] = useState([]);
   const [playedSong, setPlayedSong] = useState(null);
-  const [isPaused, setIsPaused] = useState(true);
+  const { isPaused, setIsPaused } = useContext(pausingContext);
+  const { currentSong, setCurrentSong } = useContext(songContext);
 
   useEffect(() => {
     const getData = async () => {
@@ -43,7 +45,10 @@ const MyMusic = () => {
 
   return (
     <div className="h-full w-full flex flex-col">
-      <div className="w-full flex" style={{ height: "90%" }}>
+      <div
+        className="w-full flex"
+        style={{ height: currentSong ? "90%" : "100%" }}
+      >
         <div className="h-full w-5/6">
           <Navbar />
           <div className="content w-full p-8 overflow-auto">
@@ -72,7 +77,7 @@ const MyMusic = () => {
         </div>
         <Sidebar />
       </div>
-      <DownBar togglePlaySound={togglePlaySound} isPaused={isPaused} />
+      {currentSong ? <DownBar togglePlaySound={togglePlaySound} /> : <></>}
     </div>
   );
 };

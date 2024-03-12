@@ -1,9 +1,10 @@
 import PlaylistView from "../components/shared/PlaylistView";
 import Sidebar from "../components/shared/Sidebar";
 import Navbar from "../components/shared/Navbar";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Howl, Howler } from "howler";
 import DownBar from "../components/shared/DownBar";
+import { songContext } from "../contexts/songContext";
 
 const focusPlaylist = [
   {
@@ -35,6 +36,8 @@ const focusPlaylist = [
 
 const HomeComponent = () => {
   const [playedSong, setPlayedSong] = useState(null);
+  const { currentSong, setCurrentSong } = useContext(songContext);
+
   const playSound = (trackURL) => {
     if (playedSong) {
       playedSong.stop();
@@ -48,7 +51,10 @@ const HomeComponent = () => {
   };
   return (
     <div className="h-full w-full flex flex-col">
-      <div className="w-full flex" style={{ height: "90%" }}>
+      <div
+        className="w-full flex"
+        style={{ height: currentSong ? "90%" : "100%" }}
+      >
         <div className="h-full w-5/6">
           <Navbar />
           <div className="content w-full p-8 overflow-auto">
@@ -61,7 +67,7 @@ const HomeComponent = () => {
         </div>
         <Sidebar />
       </div>
-      <DownBar />
+      {currentSong ? <DownBar /> : <></>}
     </div>
   );
 };
