@@ -11,14 +11,11 @@ import { useState } from "react";
 
 function App() {
   const [currentSong, setCurrentSong] = useState(null);
-  const [isPaused, setIsPaused] = useState(true);
 
   return (
     <div className="w-screen h-screen">
       <BrowserRouter>
-        <songContext.Provider
-          value={{ currentSong, setCurrentSong, isPaused, setIsPaused }}
-        >
+        <songContext.Provider value={{ currentSong, setCurrentSong }}>
           <Routes>
             <Route path="/" element={<HomeComponent />} />
             <Route path="/login" element={<LoginComponent />} />
