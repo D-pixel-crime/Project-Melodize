@@ -29,14 +29,14 @@ const MyMusic = () => {
     sound.play();
   };
 
-  const togglePlaySound = (trackURL) => {
-    if (isPaused) {
-      playSound(trackURL);
-    } else {
-      playedSong.pause();
-    }
-    setIsPaused(!isPaused);
-  };
+  // const togglePlaySound = (trackURL) => {
+  //   if (isPaused) {
+  //     playSound(trackURL);
+  //   } else {
+  //     playedSong.pause();
+  //   }
+  //   setIsPaused(!isPaused);
+  // };
 
   return (
     <CommonContainer>
