@@ -1,11 +1,10 @@
 import { Icon } from "@iconify/react";
 import { useContext } from "react";
 import { songContext } from "../../contexts/songContext";
-import { pausingContext } from "../../contexts/pausingContext";
 
-const SingleSongCard = ({ name, thumbnail, track, artist, playSound }) => {
-  const { currentSong, setCurrentSong } = useContext(songContext);
-  const { isPaused, setIsPaused } = useContext(pausingContext);
+const SingleSongCard = ({ name, thumbnail, track, artist }) => {
+  const { currentSong, setCurrentSong, isPaused, setIsPaused } =
+    useContext(songContext);
 
   return (
     <div className="singleSongCard flex justify-between text-white mt-5 items-center p-2 rounded-lg px-4">

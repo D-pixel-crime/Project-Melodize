@@ -1,10 +1,5 @@
 import PlaylistView from "../components/shared/PlaylistView";
-import Sidebar from "../components/shared/Sidebar";
-import Navbar from "../components/shared/Navbar";
-import { useContext, useState } from "react";
-import { Howl, Howler } from "howler";
-import DownBar from "../components/shared/DownBar";
-import { songContext } from "../contexts/songContext";
+import CommonContainer from "../containers/CommonContainer";
 
 const focusPlaylist = [
   {
@@ -35,40 +30,11 @@ const focusPlaylist = [
 ];
 
 const HomeComponent = () => {
-  const [playedSong, setPlayedSong] = useState(null);
-  const { currentSong, setCurrentSong } = useContext(songContext);
-
-  const playSound = (trackURL) => {
-    if (playedSong) {
-      playedSong.stop();
-    }
-    let sound = new Howl({
-      src: [trackURL],
-      html5: true,
-    });
-    setPlayedSong(sound);
-    sound.play();
-  };
   return (
-    <div className="h-full w-full flex flex-col">
-      <div
-        className="w-full flex"
-        style={{ height: currentSong ? "90%" : "100%" }}
-      >
-        <div className="h-full w-5/6">
-          <Navbar />
-          <div className="content w-full p-8 overflow-auto">
-            <PlaylistView title={"Focus"} cardData={focusPlaylist} />
-            <PlaylistView
-              title={"Melodize Playlist"}
-              cardData={focusPlaylist}
-            />
-          </div>
-        </div>
-        <Sidebar />
-      </div>
-      {currentSong ? <DownBar /> : <></>}
-    </div>
+    <CommonContainer>
+      <PlaylistView title={"Focus"} cardData={focusPlaylist} />
+      <PlaylistView title={"Melodize Playlist"} cardData={focusPlaylist} />
+    </CommonContainer>
   );
 };
 export default HomeComponent;
