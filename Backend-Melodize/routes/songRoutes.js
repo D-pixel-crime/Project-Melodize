@@ -61,14 +61,14 @@ router.get(
 );
 
 router.get(
-  "/get/songName",
+  "/get/songName/:body",
   passport.authenticate("jwt", { session: false }),
   async (req, res) => {
-    const { songName } = req.body;
+    const songName = req.params.body;
     try {
       const songs = await Song.find({
         name: { $regex: songName, $options: "i" },
-      });
+      }).populate("artist");
       return res.status(200).json({ data: songs });
     } catch (err) {
       return res.status(403).json({ error: err.message });
