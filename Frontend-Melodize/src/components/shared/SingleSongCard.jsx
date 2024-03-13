@@ -26,7 +26,13 @@ const SingleSongCard = ({ name, thumbnail, track, artist, playSound }) => {
           }}
         >
           <Icon
-            icon="gridicons:play"
+            icon={
+              currentSong
+                ? !isPaused && currentSong.name === name
+                  ? "gridicons:pause"
+                  : "gridicons:play"
+                : "gridicons:play"
+            }
             className="size-6 cursor-pointer hover:opacity-75"
           />
         </div>

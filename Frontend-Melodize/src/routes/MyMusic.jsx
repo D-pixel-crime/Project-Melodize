@@ -22,7 +22,19 @@ const MyMusic = () => {
     getData();
   }, []);
 
-  const playSound = (trackURL) => {
+  useEffect(() => {
+    if (!currentSong) return;
+
+    changeSong(currentSong.track);
+  }, [currentSong]);
+
+  const playSound = () => {
+    if (!playedSong) return;
+
+    playedSong.play();
+  };
+
+  const changeSong = (trackURL) => {
     if (playedSong) {
       playedSong.stop();
     }
@@ -34,9 +46,9 @@ const MyMusic = () => {
     sound.play();
   };
 
-  const togglePlaySound = (trackURL) => {
+  const togglePlaySound = () => {
     if (isPaused) {
-      playSound(trackURL);
+      playSound();
     } else {
       playedSong.pause();
     }
@@ -65,7 +77,6 @@ const MyMusic = () => {
                         thumbnail={item.thumbnail}
                         track={item.track}
                         artist={item.artist}
-                        playSound={playSound}
                         key={index}
                       />
                     );
