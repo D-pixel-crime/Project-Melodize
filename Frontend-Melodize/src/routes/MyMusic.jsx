@@ -2,9 +2,13 @@ import SingleSongCard from "../components/shared/SingleSongCard";
 import { useEffect, useState } from "react";
 import { makeAuthenticatedGETRequest } from "../utils/serverHelpers";
 import CommonContainer from "../containers/CommonContainer";
+import { useNavigate } from "react-router-dom";
+import { useCookies } from "react-cookie";
 
 const MyMusic = () => {
   const [songData, setSongData] = useState([]);
+  const navigate = useNavigate();
+  const [cookie, setCookie] = useCookies(["token", "username", "userId"]);
 
   useEffect(() => {
     const getData = async () => {
@@ -13,6 +17,10 @@ const MyMusic = () => {
     };
     getData();
   }, []);
+
+  useEffect(() => {
+    if (!cookie.token) navigate("/");
+  });
 
   return (
     <CommonContainer>

@@ -1,3 +1,5 @@
+import { Icon } from "@iconify/react";
+
 const TextInput = ({
   type,
   placeholder,
@@ -11,7 +13,13 @@ const TextInput = ({
     <div className="flex flex-col w-full mt-5 mb-1">
       <label
         htmlFor={label}
-        className={otherThanLoginPage ? "mb-1 text-white" : "mb-1"}
+        className={
+          otherThanLoginPage
+            ? label === "Search"
+              ? "mb-1 text-white text-4xl"
+              : "mb-1 text-white"
+            : "mb-1"
+        }
       >
         {label}
       </label>

@@ -12,6 +12,7 @@ const IconText = ({ iconName, iconText, active }) => {
         event.preventDefault();
         if (iconText === "Home") navigate("/");
         else if (iconText === "My Music") navigate("/myMusic");
+        else if (iconText === "Search") navigate("/search");
       }}
     >
       <div className="mr-3">
