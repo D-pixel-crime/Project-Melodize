@@ -28,8 +28,10 @@ const TextInput = ({
         placeholder={placeholder}
         className={
           !notAllowed
-            ? "p-2 border-2 border-gray-400 rounded text-gray-500"
-            : "p-2 border-2 border-gray-400 rounded text-gray-500 cursor-not-allowed"
+            ? label === "Search"
+              ? "p-2 border-2 border-gray-400 rounded-lg text-gray-500 focus:text-white focus:bg-transparent focus:border-white"
+              : "p-2 border-2 border-gray-400 rounded-lg text-gray-500"
+            : "p-2 border-2 border-gray-400 rounded-lg text-gray-500 cursor-not-allowed"
         }
         id={label}
         value={value}

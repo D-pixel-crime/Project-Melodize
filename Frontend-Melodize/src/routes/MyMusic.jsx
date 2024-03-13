@@ -13,7 +13,7 @@ const MyMusic = () => {
   useEffect(() => {
     const getData = async () => {
       const res = await makeAuthenticatedGETRequest("/song/get/mysongs");
-      setSongData(...songData, res.data);
+      setSongData(res.data);
     };
     getData();
   }, []);
