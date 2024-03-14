@@ -8,11 +8,13 @@ import IconText from "../components/shared/IconText";
 import { Icon } from "@iconify/react";
 import homePageLogo from "../assets/melodizeLogo.svg";
 import { useLocation } from "react-router-dom";
+import CreatePlaylistModal from "../modals/createPlaylistModal";
 
 const CommonContainer = ({ children }) => {
   const navigate = useNavigate();
   const currentPath = useLocation().pathname;
   const [cookie, setCookie] = useCookies(["token", "username", "userId"]);
+  const [openCreatePlaylistModal, setOpenCreatePlaylistModal] = useState(false);
   const {
     currentSong,
     setCurrentSong,
@@ -64,6 +66,11 @@ const CommonContainer = ({ children }) => {
 
   return (
     <div className="h-full w-full flex flex-col">
+      {openCreatePlaylistModal && (
+        <CreatePlaylistModal
+          setOpenCreatePlaylistModal={setOpenCreatePlaylistModal}
+        />
+      )}
       <div
         className="w-full flex"
         style={{ height: currentSong ? "90%" : "100%" }}
@@ -157,6 +164,7 @@ const CommonContainer = ({ children }) => {
                 iconName={"ic:round-add-box"}
                 iconText={"Create Playlist"}
                 active={currentPath === "/createPlaylist" ? true : false}
+                setOpenCreatePlaylistModal={setOpenCreatePlaylistModal}
               />
               <IconText
                 iconName={"solar:chat-square-like-bold"}
@@ -172,12 +180,6 @@ const CommonContainer = ({ children }) => {
               ) : (
                 <></>
               )}
-            </div>
-          </div>
-          <div className="flex text-gray-400 justify-center items-center text-lg border-t-2 mx-2 py-4 border-gray-400">
-            <div className="navbar-text flex hover:cursor-pointer justify-center items-center border-2 border-gray-400 w-2/5 p-1 rounded-full hover:border-white hover:text-white">
-              <Icon icon="ph:globe" />
-              <div className="ml-1">English</div>
             </div>
           </div>
         </div>

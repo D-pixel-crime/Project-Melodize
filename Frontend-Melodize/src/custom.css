@@ -119,3 +119,10 @@
     border-top: 1px solid rgb(55, 54, 54);
     height: 10%;
 }
+
+.cross-playlist:hover {
+    cursor: pointer;
+    transform: scale(1.5);
+    transition: 0.5s;
+    color: red;
+}

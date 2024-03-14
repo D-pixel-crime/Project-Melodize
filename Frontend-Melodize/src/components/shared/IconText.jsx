@@ -1,7 +1,12 @@
 import { Icon } from "@iconify/react";
 import { useNavigate } from "react-router-dom";
 
-const IconText = ({ iconName, iconText, active }) => {
+const IconText = ({
+  iconName,
+  iconText,
+  active,
+  setOpenCreatePlaylistModal,
+}) => {
   const navigate = useNavigate();
   return (
     <div
@@ -13,6 +18,8 @@ const IconText = ({ iconName, iconText, active }) => {
         if (iconText === "Home") navigate("/");
         else if (iconText === "My Music") navigate("/myMusic");
         else if (iconText === "Search") navigate("/search");
+        else if (iconText === "Create Playlist")
+          setOpenCreatePlaylistModal(true);
       }}
     >
       <div className="mr-3">
