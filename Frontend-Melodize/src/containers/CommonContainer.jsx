@@ -9,12 +9,16 @@ import { Icon } from "@iconify/react";
 import homePageLogo from "../assets/melodizeLogo.svg";
 import { useLocation } from "react-router-dom";
 import CreatePlaylistModal from "../modals/createPlaylistModal";
+import AddSongToPlaylist from "../modals/AddSongToPlaylistModal";
+import { makeAuthenticatedGETRequest } from "../utils/serverHelpers";
 
 const CommonContainer = ({ children }) => {
   const navigate = useNavigate();
   const currentPath = useLocation().pathname;
   const [cookie, setCookie] = useCookies(["token", "username", "userId"]);
   const [openCreatePlaylistModal, setOpenCreatePlaylistModal] = useState(false);
+  const [addPlaylistModalOpen, setAddPlaylistModelOpen] = useState(false);
+
   const {
     currentSong,
     setCurrentSong,
@@ -70,6 +74,9 @@ const CommonContainer = ({ children }) => {
         <CreatePlaylistModal
           setOpenCreatePlaylistModal={setOpenCreatePlaylistModal}
         />
+      )}
+      {addPlaylistModalOpen && (
+        <AddSongToPlaylist setAddPlaylistModelOpen={setAddPlaylistModelOpen} />
       )}
       <div
         className="w-full flex"
@@ -244,8 +251,21 @@ const CommonContainer = ({ children }) => {
             <div></div>
           </div>
           <div className="flex items-center w-1/4 text-base justify-end">
-            <div>3:44</div>
-            <div>...</div>
+            <div>
+              <Icon
+                icon="material-symbols:playlist-add-rounded"
+                className="text-gray-400 hover:text-white cursor-pointer text-2xl mx-1 hover:scale-110"
+                onClick={() => {
+                  setAddPlaylistModelOpen(true);
+                }}
+              />
+            </div>
+            <div>
+              <Icon
+                icon="icon-park-outline:like"
+                className="text-gray-400 hover:text-white cursor-pointer text-2xl mx-1 hover:scale-110"
+              />
+            </div>
           </div>
         </div>
       ) : (
