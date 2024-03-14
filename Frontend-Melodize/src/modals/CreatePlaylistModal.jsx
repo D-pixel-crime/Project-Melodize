@@ -1,10 +1,25 @@
 import { Icon } from "@iconify/react";
 import TextInput from "../components/shared/TextInput";
 import { useState } from "react";
+import { makeAuthenticatedPOSTRequest } from "../utils/serverHelpers";
 
 const CreatePlaylistModal = ({ setOpenCreatePlaylistModal }) => {
   const [name, setName] = useState("");
   const [thumbnail, setThumbnail] = useState("");
+
+  const handleCreate = async () => {
+    const res = await makeAuthenticatedPOSTRequest("/playlist/create", {
+      name,
+      thumbnail,
+      songs: [],
+    });
+    if (res) {
+      setOpenCreatePlaylistModal(false);
+      setName("");
+      setThumbnail("");
+    }
+  };
+
   return (
     <div className="absolute w-screen h-screen bg-black z-40 bg-opacity-70 text-white">
       <div className="flex flex-col justify-center items-center h-full">
@@ -35,7 +50,13 @@ const CreatePlaylistModal = ({ setOpenCreatePlaylistModal }) => {
               setValue={setThumbnail}
             />
           </div>
-          <button className="text-black text-lg mt-10 hover:bg-cyan-400 rounded-full">
+          <button
+            className="text-black text-lg mt-10 hover:bg-cyan-400 rounded-full"
+            onClick={(event) => {
+              event.preventDefault();
+              handleCreate();
+            }}
+          >
             Create
           </button>
         </div>
