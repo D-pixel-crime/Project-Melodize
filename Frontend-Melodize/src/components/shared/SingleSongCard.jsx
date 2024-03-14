@@ -14,7 +14,6 @@ const SingleSongCard = ({ name, thumbnail, track, artist }) => {
             event.preventDefault();
             setCurrentSong({ name, thumbnail, track, artist });
             setIsPaused(false);
-            playSound(track);
           }}
           className="songCardImage w-12 h-12 rounded-md mr-2 flex justify-center items-center"
           style={{
