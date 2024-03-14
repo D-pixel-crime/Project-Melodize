@@ -18,6 +18,7 @@ const IconText = ({
         if (iconText === "Home") navigate("/");
         else if (iconText === "My Music") navigate("/myMusic");
         else if (iconText === "Search") navigate("/search");
+        else if (iconText === "Library") navigate("/library");
         else if (iconText === "Create Playlist")
           setOpenCreatePlaylistModal(true);
       }}
