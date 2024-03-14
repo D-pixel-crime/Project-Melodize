@@ -102,4 +102,18 @@ router.post(
   }
 );
 
+router.get(
+  "/get/myPlaylists",
+  passport.authenticate("jwt", { session: false }),
+  async (req, res) => {
+    const currentUser = req.user;
+    try {
+      const response = await Playlist.find({ owner: currentUser._id });
+      return res.status(200).json({ data: response });
+    } catch (err) {
+      res.status(403).json({ error: err.message });
+    }
+  }
+);
+
 export { router };
