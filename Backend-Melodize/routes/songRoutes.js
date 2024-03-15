@@ -43,6 +43,20 @@ router.get(
 );
 
 router.get(
+  "/get/singleSong/:id",
+  passport.authenticate("jwt", { session: false }),
+  async (req, res) => {
+    const id = req.params.id;
+    try {
+      const song = await Song.findOne({ _id: id }).populate("artist");
+      return res.status(200).json({ data: song });
+    } catch (err) {
+      return res.status(403).json({ error: err.message });
+    }
+  }
+);
+
+router.get(
   "/get/artist",
   passport.authenticate("jwt", { session: false }),
   async (req, res) => {
