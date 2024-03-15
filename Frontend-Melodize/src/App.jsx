@@ -10,11 +10,13 @@ import { songContext } from "./contexts/songContext";
 import { useState } from "react";
 import SearchPage from "./routes/SearchPage";
 import Library from "./routes/Library";
+import IndependentLibrary from "./routes/IndependentLibrary";
 
 function App() {
   const [currentSong, setCurrentSong] = useState(null);
   const [isPaused, setIsPaused] = useState(true);
   const [playedSong, setPlayedSong] = useState(null);
+  const [independentPlaylist, setIndependentPlaylist] = useState(null);
 
   return (
     <div className="w-screen h-screen">
@@ -27,6 +29,8 @@ function App() {
             setIsPaused,
             playedSong,
             setPlayedSong,
+            independentPlaylist,
+            setIndependentPlaylist,
           }}
         >
           <Routes>
@@ -37,6 +41,7 @@ function App() {
             <Route path="/myMusic" element={<MyMusic />} />
             <Route path="/search" element={<SearchPage />} />
             <Route path="/library" element={<Library />} />
+            <Route path="/independent/:id" element={<IndependentLibrary />} />
             <Route path="*" element={<Navigate to={"/"} />} />
           </Routes>
         </songContext.Provider>

@@ -7,4 +7,6 @@ export const songContext = createContext({
   setPlayedSong: (playedSound) => {},
   isPaused: true,
   setIsPaused: (isPaused) => {},
+  independentPlaylist: null,
+  setIndependentPlaylist: (independentPlaylist) => {},
 });

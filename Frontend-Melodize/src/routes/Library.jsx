@@ -8,8 +8,8 @@ import PlaylistCard from "../components/shared/PlaylistCard";
 const Library = () => {
   const [cookie, setCookie] = useCookies(["token", "username", "userId"]);
   const [playlistData, setPlaylistData] = useState([]);
-
   const navigate = useNavigate();
+
   useEffect(() => {
     if (!cookie.token) navigate("/");
   });
@@ -35,12 +35,20 @@ const Library = () => {
           <div className="w-full grid grid-cols-5 gap-4 mt-4 text-center">
             {playlistData.map((element, index) => {
               return (
-                <PlaylistCard
-                  title={element.name}
-                  description={""}
-                  url={element.thumbnail}
-                  key={index}
-                />
+                <div
+                  className="cursor-pointer hover:underline"
+                  onClick={(event) => {
+                    event.preventDefault();
+                    navigate(`/independent/${element._id}`);
+                  }}
+                >
+                  <PlaylistCard
+                    title={element.name}
+                    description={""}
+                    url={element.thumbnail}
+                    key={index}
+                  />
+                </div>
               );
             })}
           </div>

@@ -6,9 +6,7 @@ const PlaylistCard = ({ title, description, url }) => {
         style={{
           backgroundImage: `url(${url})`,
         }}
-      >
-        transparent
-      </div>
+      ></div>
       <div>
         <div className="text-white">{title}</div>
         <div className="text-gray-400">{description}</div>
