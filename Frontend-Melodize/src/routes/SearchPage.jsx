@@ -60,6 +60,7 @@ const SearchPage = () => {
               {songData.map((element, index) => {
                 return (
                   <SingleSongCard
+                    id={element._id}
                     name={element.name}
                     thumbnail={element.thumbnail}
                     track={element.track}

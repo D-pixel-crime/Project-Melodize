@@ -1,9 +1,14 @@
 import { Icon } from "@iconify/react";
-import { useEffect, useState } from "react";
-import { makeAuthenticatedGETRequest } from "../utils/serverHelpers";
+import { useContext, useEffect, useState } from "react";
+import {
+  makeAuthenticatedGETRequest,
+  makeAuthenticatedPOSTRequest,
+} from "../utils/serverHelpers";
+import { songContext } from "../contexts/songContext";
 
 const AddSongToPlaylistModal = ({ setAddPlaylistModelOpen }) => {
   const [playlists, setPlaylists] = useState([]);
+  const { currentSong, setCurrentSong } = useContext(songContext);
 
   useEffect(() => {
     const handleFetch = async () => {
@@ -16,6 +21,17 @@ const AddSongToPlaylistModal = ({ setAddPlaylistModelOpen }) => {
     };
     handleFetch();
   }, []);
+
+  const handleAdd = async (playlistId) => {
+    const res = await makeAuthenticatedPOSTRequest("/playlist/add/song", {
+      playlistId,
+      songId: currentSong._id,
+    });
+    if (res) {
+      setAddPlaylistModelOpen(false);
+      console.log(res);
+    }
+  };
 
   return (
     <div className="absolute w-screen h-screen bg-black z-40 bg-opacity-70 text-white">
@@ -40,6 +56,10 @@ const AddSongToPlaylistModal = ({ setAddPlaylistModelOpen }) => {
                   <div
                     className="flex items-center mt-4 mx-5 p-2 hover:bg-gray-700 rounded-lg cursor-pointer hover:scale-105 transition"
                     key={index}
+                    onClick={(event) => {
+                      event.preventDefault();
+                      handleAdd(element._id);
+                    }}
                   >
                     <div
                       style={{ backgroundImage: `url(${element.thumbnail})` }}

@@ -33,6 +33,7 @@ const MyMusic = () => {
             {songData.map((item, index) => {
               return (
                 <SingleSongCard
+                  id={item._id}
                   name={item.name}
                   thumbnail={item.thumbnail}
                   track={item.track}
