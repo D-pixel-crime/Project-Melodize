@@ -41,12 +41,12 @@ const Library = () => {
                     event.preventDefault();
                     navigate(`/independent/${element._id}`);
                   }}
+                  key={index}
                 >
                   <PlaylistCard
                     title={element.name}
                     description={""}
                     url={element.thumbnail}
-                    key={index}
                   />
                 </div>
               );

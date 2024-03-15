@@ -2,6 +2,7 @@ import { useLocation } from "react-router-dom";
 import CommonContainer from "../containers/CommonContainer";
 import { useEffect, useState } from "react";
 import { makeAuthenticatedGETRequest } from "../utils/serverHelpers";
+import SingleSongCard from "../components/shared/SingleSongCard";
 
 const IndependentLibrary = () => {
   const currentPath = useLocation().pathname.trim();
@@ -16,18 +17,48 @@ const IndependentLibrary = () => {
       );
       setPlaylist(res.data);
 
-      const songs = res.data.songs;
-      for (const element of songs) {
-        const { data } = await makeAuthenticatedGETRequest(
+      const temp = res.data.songs;
+      for (const element of temp) {
+        const eachSong = await makeAuthenticatedGETRequest(
           `/song/get/singleSong/${element}`
         );
-        setSongs(...songs, data);
+        setSongs((prevSongs) => [...prevSongs, eachSong.data]);
       }
     };
 
     handleFetch();
   }, []);
 
-  return <CommonContainer></CommonContainer>;
+  return (
+    <CommonContainer>
+      {playlist && songs.length > 0 ? (
+        <div className="w-full h-full flex flex-col items-center text-white mb-5">
+          <div className="flex justify-center items-center border-b-2 border-gray-400 w-full pb-4 space-x-4">
+            <div
+              className="bg-cover bg-no-repeat bg-center h-48 w-52 rounded-lg"
+              style={{ backgroundImage: `url(${playlist.thumbnail})` }}
+            ></div>
+            <div className="text-5xl">{playlist.name}</div>
+          </div>
+          <div className="w-full px-7 mt-2">
+            {songs.map((element, index) => {
+              return (
+                <SingleSongCard
+                  name={element.name}
+                  thumbnail={element.thumbnail}
+                  artist={element.artist}
+                  track={element.track}
+                  key={index}
+                  id={element._id}
+                />
+              );
+            })}
+          </div>
+        </div>
+      ) : (
+        <></>
+      )}
+    </CommonContainer>
+  );
 };
 export default IndependentLibrary;
