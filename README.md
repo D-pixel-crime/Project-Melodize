@@ -1,4 +1,4 @@
-# MusicApp
+# Melodize
 
 Melodize is a full-stack web application built using the MERN (MongoDB, Express.js, React.js, Node.js) stack. This application provides users with an intuitive platform to discover, listen to, and manage their favorite music seamlessly. Similar to popular music streaming services like Spotify, MusicApp offers a rich user experience with features including user authentication, playlist creation, song browsing, and playback functionality.
 
