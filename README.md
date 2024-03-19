@@ -32,7 +32,7 @@ git clone https://github.com/D-pixel-crime/Project-Melodize.git
 2. Navigate to the project directory:
 
 ```
-cd musicapp
+cd "Project Melodize"
 ```
 
 3. Install dependencies for both the client and server:
