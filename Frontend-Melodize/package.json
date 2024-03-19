@@ -15,6 +15,7 @@
     "axios": "^1.6.7",
     "cloudinary-core": "^2.13.0",
     "cloudinary-react": "^1.8.1",
+    "flowbite": "^2.3.0",
     "howler": "^2.2.4",
     "morgan": "^1.10.0",
     "react": "^18.2.0",

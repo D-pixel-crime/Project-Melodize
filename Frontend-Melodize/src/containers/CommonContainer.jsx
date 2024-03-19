@@ -10,7 +10,6 @@ import homePageLogo from "../assets/melodizeLogo.svg";
 import { useLocation } from "react-router-dom";
 import CreatePlaylistModal from "../modals/createPlaylistModal";
 import AddSongToPlaylist from "../modals/AddSongToPlaylistModal";
-import { makeAuthenticatedGETRequest } from "../utils/serverHelpers";
 
 const CommonContainer = ({ children }) => {
   const navigate = useNavigate();
@@ -18,6 +17,8 @@ const CommonContainer = ({ children }) => {
   const [cookie, setCookie] = useCookies(["token", "username", "userId"]);
   const [openCreatePlaylistModal, setOpenCreatePlaylistModal] = useState(false);
   const [addPlaylistModalOpen, setAddPlaylistModelOpen] = useState(false);
+  let date = new Date();
+  date.setDate(date.getDate() + 30);
 
   const {
     currentSong,
@@ -132,7 +133,19 @@ const CommonContainer = ({ children }) => {
                   >
                     Upload Song
                   </div>
-                  <div className="rounded-lg p-1.5 border-2 border-cyan-500 bg-transparent text-cyan-500 hover:cursor-pointer">
+                  <div
+                    className="rounded-lg p-1.5 border-2 border-cyan-500 bg-transparent text-cyan-500 hover:cursor-pointer"
+                    onClick={() => {
+                      togglePlaySound();
+                      setCookie("token", "", { path: "/", expires: date });
+                      setCookie("username", "", {
+                        path: "/",
+                        expires: date,
+                      });
+                      setCookie("userId", "", { path: "/", expires: date });
+                      navigate("/login");
+                    }}
+                  >
                     {cookie.username}
                   </div>
                 </div>
