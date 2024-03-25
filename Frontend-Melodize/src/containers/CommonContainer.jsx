@@ -248,6 +248,21 @@ const CommonContainer = ({ children }) => {
               <Icon
                 icon="fluent:previous-48-filled"
                 className="text-gray-400 hover:text-white cursor-pointer"
+                onClick={(e) => {
+                  e.preventDefault();
+                  if (independentPlaylist.length > 0) {
+                    let includes = false;
+                    for (let i = 0; i < independentPlaylist.length; i++) {
+                      if (independentPlaylist[i]._id === currentSong._id) {
+                        includes = true;
+                        if (i !== 0) {
+                          setCurrentSong(independentPlaylist[i - 1]);
+                          return;
+                        }
+                      }
+                    }
+                  } else return;
+                }}
               />
               <Icon
                 icon={
@@ -268,6 +283,21 @@ const CommonContainer = ({ children }) => {
               <Icon
                 icon="fluent:next-48-filled"
                 className="text-gray-400 hover:text-white cursor-pointer"
+                onClick={(e) => {
+                  e.preventDefault();
+                  if (independentPlaylist.length > 0) {
+                    let includes = false;
+                    for (let i = 0; i < independentPlaylist.length; i++) {
+                      if (independentPlaylist[i]._id === currentSong._id) {
+                        includes = true;
+                        if (i !== independentPlaylist.length - 1) {
+                          setCurrentSong(independentPlaylist[i + 1]);
+                          return;
+                        }
+                      }
+                    }
+                  } else return;
+                }}
               />
               <Icon
                 icon="mingcute:repeat-line"

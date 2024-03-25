@@ -25,10 +25,7 @@ const IndependentLibrary = () => {
           `/song/get/singleSong/${element}`
         );
         setSongs((prevSongs) => [...prevSongs, eachSong.data]);
-        setIndependentPlaylist((prevList) => [
-          ...prevList,
-          eachSong.data.track,
-        ]);
+        setIndependentPlaylist((prevList) => [...prevList, eachSong.data]);
       }
     };
     setIndependentPlaylist([]);
