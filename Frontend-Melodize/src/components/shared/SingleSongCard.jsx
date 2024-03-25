@@ -1,6 +1,7 @@
 import { Icon } from "@iconify/react";
 import { useContext } from "react";
 import { songContext } from "../../contexts/songContext";
+import animation from "../../Animation - 1711389074547.gif";
 
 const SingleSongCard = ({ name, thumbnail, track, artist, id }) => {
   const { currentSong, setCurrentSong, isPaused, setIsPaused } =
@@ -44,8 +45,13 @@ const SingleSongCard = ({ name, thumbnail, track, artist, id }) => {
         </div>
       </div>
       <div className="flex items-center text-base">
-        <div>3:44</div>
-        <div>...</div>
+        <div>
+          {currentSong && currentSong._id === id && !isPaused ? (
+            <img src={animation} alt="Music Playing" />
+          ) : (
+            <></>
+          )}
+        </div>
       </div>
     </div>
   );
