@@ -62,11 +62,7 @@ const CommonContainer = ({ children }) => {
       loop: !independentPlaylist ? true : false,
       autoplay: independentPlaylist ? true : false,
       onend: function () {
-        trackURL = independentPlaylist
-          ? independentPlaylist.filter(
-              (element) => currentSong.track !== element
-            )
-          : "";
+        nextSong();
       },
     });
     setPlayedSong(sound);
@@ -80,6 +76,33 @@ const CommonContainer = ({ children }) => {
       playedSong.pause();
     }
     setIsPaused(!isPaused);
+  };
+
+  const previousSong = (e) => {
+    e.preventDefault();
+    if (independentPlaylist.length > 0) {
+      for (let i = 0; i < independentPlaylist.length; i++) {
+        if (independentPlaylist[i]._id === currentSong._id) {
+          if (i !== 0) {
+            setCurrentSong(independentPlaylist[i - 1]);
+            return;
+          }
+        }
+      }
+    } else return;
+  };
+  const nextSong = (e) => {
+    e.preventDefault();
+    if (independentPlaylist.length > 0) {
+      for (let i = 0; i < independentPlaylist.length; i++) {
+        if (independentPlaylist[i]._id === currentSong._id) {
+          if (i !== independentPlaylist.length - 1) {
+            setCurrentSong(independentPlaylist[i + 1]);
+            return;
+          }
+        }
+      }
+    } else return;
   };
 
   return (
@@ -248,21 +271,7 @@ const CommonContainer = ({ children }) => {
               <Icon
                 icon="fluent:previous-48-filled"
                 className="text-gray-400 hover:text-white cursor-pointer"
-                onClick={(e) => {
-                  e.preventDefault();
-                  if (independentPlaylist.length > 0) {
-                    let includes = false;
-                    for (let i = 0; i < independentPlaylist.length; i++) {
-                      if (independentPlaylist[i]._id === currentSong._id) {
-                        includes = true;
-                        if (i !== 0) {
-                          setCurrentSong(independentPlaylist[i - 1]);
-                          return;
-                        }
-                      }
-                    }
-                  } else return;
-                }}
+                onClick={previousSong}
               />
               <Icon
                 icon={
@@ -283,21 +292,7 @@ const CommonContainer = ({ children }) => {
               <Icon
                 icon="fluent:next-48-filled"
                 className="text-gray-400 hover:text-white cursor-pointer"
-                onClick={(e) => {
-                  e.preventDefault();
-                  if (independentPlaylist.length > 0) {
-                    let includes = false;
-                    for (let i = 0; i < independentPlaylist.length; i++) {
-                      if (independentPlaylist[i]._id === currentSong._id) {
-                        includes = true;
-                        if (i !== independentPlaylist.length - 1) {
-                          setCurrentSong(independentPlaylist[i + 1]);
-                          return;
-                        }
-                      }
-                    }
-                  } else return;
-                }}
+                onClick={nextSong}
               />
               <Icon
                 icon="mingcute:repeat-line"
