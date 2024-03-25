@@ -7,7 +7,7 @@ const SingleSongCard = ({ name, thumbnail, track, artist, id }) => {
     useContext(songContext);
 
   return (
-    <div className="singleSongCard flex justify-between text-white mt-5 items-center p-2 rounded-lg px-4">
+    <div className="singleSongCard flex justify-between text-white mt-5 items-center p-2 rounded-lg px-4 hover:transition">
       <div className="flex">
         <div
           onClick={(event) => {

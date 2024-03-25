@@ -78,8 +78,7 @@ const CommonContainer = ({ children }) => {
     setIsPaused(!isPaused);
   };
 
-  const previousSong = (e) => {
-    e.preventDefault();
+  const previousSong = () => {
     if (independentPlaylist.length > 0) {
       for (let i = 0; i < independentPlaylist.length; i++) {
         if (independentPlaylist[i]._id === currentSong._id) {
@@ -91,8 +90,7 @@ const CommonContainer = ({ children }) => {
       }
     } else return;
   };
-  const nextSong = (e) => {
-    e.preventDefault();
+  const nextSong = () => {
     if (independentPlaylist.length > 0) {
       for (let i = 0; i < independentPlaylist.length; i++) {
         if (independentPlaylist[i]._id === currentSong._id) {
@@ -182,7 +180,7 @@ const CommonContainer = ({ children }) => {
                       setSignoutModalOpen(true);
                     }}
                   >
-                    {cookie.username}
+                    {cookie.username.substring(0, 10)}
                   </div>
                 </div>
               )}
@@ -271,7 +269,10 @@ const CommonContainer = ({ children }) => {
               <Icon
                 icon="fluent:previous-48-filled"
                 className="text-gray-400 hover:text-white cursor-pointer"
-                onClick={previousSong}
+                onClick={(e) => {
+                  e.preventDefault();
+                  previousSong();
+                }}
               />
               <Icon
                 icon={
@@ -292,7 +293,10 @@ const CommonContainer = ({ children }) => {
               <Icon
                 icon="fluent:next-48-filled"
                 className="text-gray-400 hover:text-white cursor-pointer"
-                onClick={nextSong}
+                onClick={(e) => {
+                  e.preventDefault();
+                  nextSong();
+                }}
               />
               <Icon
                 icon="mingcute:repeat-line"
