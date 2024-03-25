@@ -19,10 +19,6 @@ const CommonContainer = ({ children }) => {
   const [openCreatePlaylistModal, setOpenCreatePlaylistModal] = useState(false);
   const [addPlaylistModalOpen, setAddPlaylistModelOpen] = useState(false);
   const [signoutModalOpen, setSignoutModalOpen] = useState(false);
-
-  let date = new Date();
-  date.setDate(date.getDate() + 30);
-
   const {
     currentSong,
     setCurrentSong,
@@ -30,7 +26,12 @@ const CommonContainer = ({ children }) => {
     setIsPaused,
     playedSong,
     setPlayedSong,
+    independentPlaylist,
+    setIndependentPlaylist,
   } = useContext(songContext);
+
+  let date = new Date();
+  date.setDate(date.getDate() + 30);
 
   const firstUpdate = useRef(true);
 
@@ -56,8 +57,17 @@ const CommonContainer = ({ children }) => {
       playedSong.stop();
     }
     let sound = new Howl({
-      src: [trackURL],
+      src: trackURL,
       html5: true,
+      loop: !independentPlaylist ? true : false,
+      autoplay: independentPlaylist ? true : false,
+      onend: function () {
+        trackURL = independentPlaylist
+          ? independentPlaylist.filter(
+              (element) => currentSong.track !== element
+            )
+          : "";
+      },
     });
     setPlayedSong(sound);
     sound.play();
@@ -262,6 +272,10 @@ const CommonContainer = ({ children }) => {
               <Icon
                 icon="mingcute:repeat-line"
                 className="text-gray-400 hover:text-white cursor-pointer ml-8"
+                onClick={(event) => {
+                  event.preventDefault();
+                  changeSong(currentSong.track);
+                }}
               />
             </div>
             <div></div>

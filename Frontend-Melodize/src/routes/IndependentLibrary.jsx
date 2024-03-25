@@ -1,14 +1,16 @@
-import { useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import CommonContainer from "../containers/CommonContainer";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { makeAuthenticatedGETRequest } from "../utils/serverHelpers";
 import SingleSongCard from "../components/shared/SingleSongCard";
+import { songContext } from "../contexts/songContext";
 
 const IndependentLibrary = () => {
-  const currentPath = useLocation().pathname.trim();
-  const id = currentPath.substring(13);
+  const { id } = useParams();
   const [playlist, setPlaylist] = useState();
   const [songs, setSongs] = useState([]);
+  const { independentPlaylist, setIndependentPlaylist } =
+    useContext(songContext);
 
   useEffect(() => {
     const handleFetch = async () => {
@@ -23,9 +25,13 @@ const IndependentLibrary = () => {
           `/song/get/singleSong/${element}`
         );
         setSongs((prevSongs) => [...prevSongs, eachSong.data]);
+        setIndependentPlaylist((prevList) => [
+          ...prevList,
+          eachSong.data.track,
+        ]);
       }
     };
-
+    setIndependentPlaylist([]);
     handleFetch();
   }, []);
 
