@@ -1,9 +1,12 @@
+import { useContext } from "react";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
+import { songContext } from "../contexts/songContext";
 
 const SignOutModal = ({ setSignoutModalOpen, date, changeSong }) => {
   const navigate = useNavigate();
   const [cookie, setCookie] = useCookies(["token", "username", "userId"]);
+  const { currentSong, setCurrentSong } = useContext(songContext);
 
   return (
     <div className="absolute w-screen h-screen bg-white z-40 bg-opacity-90 text-white">
@@ -33,6 +36,7 @@ const SignOutModal = ({ setSignoutModalOpen, date, changeSong }) => {
                 });
                 setCookie("userId", "", { path: "/", expires: date });
                 navigate("/login");
+                setCurrentSong(null);
                 changeSong("");
                 setSignoutModalOpen(false);
               }}

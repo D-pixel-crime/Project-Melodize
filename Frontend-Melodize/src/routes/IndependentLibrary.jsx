@@ -36,7 +36,7 @@ const IndependentLibrary = () => {
     <CommonContainer>
       {playlist && songs.length > 0 ? (
         <div className="w-full h-full flex flex-col items-center text-white mb-5">
-          <div className="flex justify-center items-center border-b-2 border-gray-400 w-full pb-4 space-x-4">
+          <div className="flex justify-center items-center border-b-2 border-gray-400 w-full pb-8 space-x-4">
             <div
               className="bg-cover bg-no-repeat bg-center h-48 w-52 rounded-lg"
               style={{ backgroundImage: `url(${playlist.thumbnail})` }}
