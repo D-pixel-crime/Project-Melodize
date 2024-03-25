@@ -63,4 +63,4 @@ cd Frontend-Melodize
 npm run dev
 ```
 
-7. Access the application by visiting `http://localhost:1022` in your web browser.
+7. Access the application by visiting `http://localhost:5173` in your web browser.
