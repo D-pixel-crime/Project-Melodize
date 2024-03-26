@@ -43,7 +43,7 @@ const IndependentLibrary = () => {
             ></div>
             <div className="text-5xl">{playlist.name}</div>
           </div>
-          <div className="w-full px-7 mt-2">
+          <div className="w-full px-7 mt-2 max-[1024px]:px-2">
             {songs.map((element, index) => {
               return (
                 <SingleSongCard

@@ -2,7 +2,7 @@ const PlaylistCard = ({ title, description, url }) => {
   return (
     <div className="card p-4 text-sm rounded-lg flex justify-between flex-col">
       <div
-        className="card-image mb-2 text-transparent rounded-md"
+        className="card-image mb-2 text-transparent rounded-md max-[768px]:size-40"
         style={{
           backgroundImage: `url(${url})`,
         }}

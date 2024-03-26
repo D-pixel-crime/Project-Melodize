@@ -28,7 +28,7 @@ const MyMusic = () => {
         <div className="text-pink-500 font-semibold text-5xl mb-2 border-b-2 border-gray-500 pb-2.5">
           My Music
         </div>
-        <div className="px-8 py-1">
+        <div className="px-8 py-1 max-[1024px]:px-2">
           <div>
             {songData.map((item, index) => {
               return (

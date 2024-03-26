@@ -47,7 +47,7 @@ const SearchPage = () => {
           </button>
         </div>
         {songData ? (
-          <div className="w-full px-16 mt-4">
+          <div className="w-full px-16 mt-4 max-[1024px]:px-4">
             {ok.length > 0 ? (
               <div className="text-gray-400 text-lg border-b-2 border-gray-400 mb-8">
                 Showing Search Results for

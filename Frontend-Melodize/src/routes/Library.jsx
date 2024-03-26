@@ -32,7 +32,7 @@ const Library = () => {
           <div className="font-semibold text-4xl mb-2 border-b-2 border-gray-500 pb-2">
             My Library
           </div>
-          <div className="w-full grid grid-cols-5 gap-4 mt-4 text-center">
+          <div className="w-full grid grid-cols-5 gap-4 mt-4 text-center max-[1024px]:grid-cols-3">
             {playlistData.map((element, index) => {
               return (
                 <div

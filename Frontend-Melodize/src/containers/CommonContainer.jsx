@@ -130,15 +130,15 @@ const CommonContainer = ({ children }) => {
             <div
               className={
                 !cookie.token
-                  ? "flex w-2/5 items-center text-lg flex-row-reverse justify-end"
-                  : "flex w-3/5 items-center text-lg flex-row-reverse justify-end"
+                  ? "flex w-2/5 items-center text-lg flex-row-reverse justify-end max-[1024px]:text-sm max-[1024px]:w-4/5"
+                  : "flex w-3/5 items-center text-lg flex-row-reverse justify-end max-[1024px]:text-sm max-[1024px]:w-4/5"
               }
             >
               <div
                 className={
                   !cookie.token
-                    ? "flex w-3/5 items-center px-4 justify-around"
-                    : "flex w-2/5 items-center px-4 justify-around"
+                    ? "flex w-3/5 items-center px-4 justify-around max-[1024px]:w-2/5"
+                    : "flex w-2/5 items-center px-4 justify-around max-[1024px]:w-2/5"
                 }
               >
                 <TextWithHover text={"Premium"} />
@@ -146,7 +146,7 @@ const CommonContainer = ({ children }) => {
                 <TextWithHover text={"Download"} />
               </div>
               {!cookie.token ? (
-                <div className="flex flex-row-reverse w-2/5 items-center px-3 text-gray-400 justify-evenly border-r-2 border-white">
+                <div className="flex flex-row-reverse w-2/5 items-center px-3 text-gray-400 justify-evenly border-r-2 border-white max-[1024px]:w-2/6">
                   <div
                     className="navbar-text hover:text-cyan-400 hover:underline"
                     onClick={() => {
@@ -186,7 +186,9 @@ const CommonContainer = ({ children }) => {
               )}
             </div>
           </div>
-          <div className="content w-full p-8 overflow-auto">{children}</div>
+          <div className="content w-full p-8 overflow-auto max-[1024px]:px-4">
+            {children}
+          </div>
         </div>
         <div className="sidebar flex justify-between flex-col h-full w-1/6">
           <div>
@@ -242,7 +244,7 @@ const CommonContainer = ({ children }) => {
         <div className="music-down-bar flex text-white p-4">
           <div className="flex w-1/4 justify-start">
             <div
-              className="songCardImage w-14 h-14 rounded-md mr-2 flex justify-center items-center"
+              className="songCardImage w-14 h-14 rounded-md mr-2 flex justify-center items-center max-[1024px]:size-10"
               style={{
                 backgroundImage: `url(${
                   currentSong
@@ -252,10 +254,10 @@ const CommonContainer = ({ children }) => {
               }}
             ></div>
             <div className="flex flex-col justify-center">
-              <div className="flex items-center hover:underline cursor-pointer">
+              <div className="flex items-center hover:underline cursor-pointer max-[1024px]:text-sm">
                 {currentSong ? currentSong.name : "Name"}
               </div>
-              <div className="text-gray-400 text-sm flex items-center hover:underline cursor-pointer">
+              <div className="text-gray-400 text-sm flex items-center hover:underline cursor-pointer max-[1024px]:text-xs">
                 {currentSong ? currentSong.artist.username : "Artist"}
               </div>
             </div>
@@ -264,7 +266,7 @@ const CommonContainer = ({ children }) => {
             <div className="flex text-2xl justify-center items-center">
               <Icon
                 icon="ph:shuffle-bold"
-                className="text-gray-400 hover:text-white cursor-pointer mr-8"
+                className="text-gray-400 hover:text-white cursor-pointer mr-8 max-[1024px]:mr-4"
               />
               <Icon
                 icon="fluent:previous-48-filled"
@@ -300,7 +302,7 @@ const CommonContainer = ({ children }) => {
               />
               <Icon
                 icon="mingcute:repeat-line"
-                className="text-gray-400 hover:text-white cursor-pointer ml-8"
+                className="text-gray-400 hover:text-white cursor-pointer ml-8 max-[1024px]:ml-4"
                 onClick={(event) => {
                   event.preventDefault();
                   changeSong(currentSong.track);
