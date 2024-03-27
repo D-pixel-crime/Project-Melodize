@@ -125,3 +125,10 @@
     transform: scale(1.1);
     transition: 0.5s;
 }
+
+.cross-playlist:hover {
+    cursor: pointer;
+    transform: scale(1.25);
+    transition: 0.5s;
+    color: red;
+}
