@@ -1,8 +1,8 @@
 import axios from "axios";
-import { backendURL } from "./config";
+import "dotenv/config";
 
 export const makeUnauthenticatedPOSTRequest = async (route, body) => {
-  const { data } = await axios.post(backendURL + route, body, {
+  const { data } = await axios.post(import.meta.BACKEND_URL + route, body, {
     headers: {
       "Content-Type": "application/json",
     },
@@ -12,7 +12,7 @@ export const makeUnauthenticatedPOSTRequest = async (route, body) => {
 
 export const makeAuthenticatedPOSTRequest = async (route, body) => {
   const token = getToken();
-  const { data } = await axios.post(backendURL + route, body, {
+  const { data } = await axios.post(import.meta.BACKEND_URL + route, body, {
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
@@ -23,7 +23,7 @@ export const makeAuthenticatedPOSTRequest = async (route, body) => {
 
 export const makeAuthenticatedGETRequest = async (route) => {
   const token = getToken();
-  const { data } = await axios.get(backendURL + route, {
+  const { data } = await axios.get(import.meta.BACKEND_URL + route, {
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
