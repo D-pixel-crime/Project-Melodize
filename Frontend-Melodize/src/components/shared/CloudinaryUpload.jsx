@@ -30,7 +30,10 @@ const CloudinaryUpload = ({ setValue }) => {
   };
 
   return (
-    <button className="rounded-full bg-yellow-500" onClick={uploadImageWidget}>
+    <button
+      className="rounded-full bg-yellow-500 max-sm:text-sm"
+      onClick={uploadImageWidget}
+    >
       Select Track
     </button>
   );

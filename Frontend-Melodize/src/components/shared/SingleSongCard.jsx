@@ -36,10 +36,10 @@ const SingleSongCard = ({ name, thumbnail, track, artist, id }) => {
           />
         </div>
         <div className="flex flex-col justify-center">
-          <div className="flex items-center hover:underline cursor-pointer">
+          <div className="flex items-center hover:underline cursor-pointer max-sm:text-xs">
             {name}
           </div>
-          <div className="text-gray-400 text-sm flex items-center hover:underline cursor-pointer">
+          <div className="text-gray-400 text-sm flex items-center max-sm:text-xs hover:underline cursor-pointer">
             {artist.username}
           </div>
         </div>

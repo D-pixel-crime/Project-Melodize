@@ -42,7 +42,7 @@ const LoginComponent = () => {
       <div className="logo p-4 border-b-2 border-solid border-red-300 w-full flex justify-center">
         <img src={loginPageLogo} alt="melodize logo" width={"250px"} />
       </div>
-      <div className="inputRegion w-4/12 py-8 flex flex-col items-center justify-evenly">
+      <div className="inputRegion w-4/12 py-8 flex flex-col items-center justify-evenly max-sm:w-5/6">
         <div className="font-bold mb-5 mt-1">
           To continue, login to Melodize.
         </div>

@@ -33,11 +33,11 @@ const UploadSong = () => {
   return (
     <CommonContainer>
       <div>
-        <div className="text-white font-semibold text-5xl mb-2 border-b-2 border-gray-500 pb-2.5">
+        <div className="text-white font-semibold text-5xl max-sm:text-4xl mb-2 border-b-2 border-gray-500 pb-2.5">
           Upload Your Song
         </div>
         <div className="px-4 mt-5">
-          <div className="grid grid-cols-2 gap-8 px-8">
+          <div className="grid grid-cols-2 max-sm:grid-cols-1 gap-8 px-8 max-sm:px-2">
             <TextInput
               label={"Name"}
               placeholder={"Enter Song Name"}
@@ -56,11 +56,12 @@ const UploadSong = () => {
               // notAllowed={true}
             />
           </div>
-          <div className="px-8 my-8 flex justify-between">
+          <div className="sm:px-8 my-8 flex max-sm:gap-4 justify-between">
             {features.fileName && features.url ? (
-              <div className="rounded-md bg-yellow-400 px-2.5 py-2 overflow-x-hidden overflow-y-hidden cursor-default mr-4 flex justify-center items-center">
-                <span className="underline">selected file</span>:
-                {" " + features.fileName.substring(20)}...
+              <div className="rounded-md bg-yellow-400 max-sm:text-sm sm:px-2.5 sm:py-2 overflow-x-hidden overflow-y-hidden cursor-default sm:mr-4 flex-center">
+                <span className="underline">
+                  {`selected file: ${features.fileName.substring(0, 20)}`}...
+                </span>
               </div>
             ) : (
               <CloudinaryUpload setValue={setFeatures} />
@@ -71,7 +72,7 @@ const UploadSong = () => {
                   event.preventDefault();
                   handleSubmit();
                 }}
-                className="navbar-text ml-4 rounded-full bg-pink-400"
+                className="navbar-text sm:ml-4 rounded-full bg-pink-400 max-sm:text-sm"
               >
                 Upload Song
               </button>

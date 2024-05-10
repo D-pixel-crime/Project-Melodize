@@ -29,6 +29,7 @@ const CommonContainer = ({ children }) => {
     independentPlaylist,
     setIndependentPlaylist,
   } = useContext(songContext);
+  const isSmallDevice = window.innerWidth <= 640;
 
   let date = new Date();
   date.setDate(date.getDate() + 30);
@@ -124,29 +125,26 @@ const CommonContainer = ({ children }) => {
         className="w-full flex"
         style={{ height: currentSong ? "90%" : "100%" }}
       >
-        <div className="h-full w-5/6">
+        <div className="h-full w-5/6 max-sm:w-full">
           <div className="navbar w-full flex justify-start">
-            <div></div>
             <div
-              className={
-                !cookie.token
-                  ? "flex w-2/5 items-center text-lg flex-row-reverse justify-end max-[1024px]:text-sm max-[1024px]:w-4/5"
-                  : "flex w-3/5 items-center text-lg flex-row-reverse justify-end max-[1024px]:text-sm max-[1024px]:w-4/5"
-              }
+              className={`flex ${
+                !cookie.token ? "w-2/5" : "w-3/5"
+              } items-center text-lg flex-row-reverse justify-end max-[1024px]:text-sm max-[1024px]:w-4/5`}
             >
-              <div
-                className={
-                  !cookie.token
-                    ? "flex w-3/5 items-center px-4 justify-around max-[1024px]:w-2/5"
-                    : "flex w-2/5 items-center px-4 justify-around max-[1024px]:w-2/5"
-                }
-              >
-                <TextWithHover text={"Premium"} />
-                <TextWithHover text={"Support"} />
-                <TextWithHover text={"Download"} />
-              </div>
+              {!isSmallDevice && (
+                <div
+                  className={`flex ${
+                    !cookie.token ? "w-3/5" : "w-2/5"
+                  } items-center px-4 justify-around max-[1024px]:w-2/5`}
+                >
+                  <TextWithHover text={"Premium"} />
+                  <TextWithHover text={"Support"} />
+                  <TextWithHover text={"Download"} />
+                </div>
+              )}
               {!cookie.token ? (
-                <div className="flex flex-row-reverse w-2/5 items-center px-3 text-gray-400 justify-evenly border-r-2 border-white max-[1024px]:w-2/6">
+                <div className="flex flex-row-reverse w-2/5 items-center px-3 text-gray-400 justify-evenly sm:border-r-2 border-white max-[1024px]:w-2/6 max-sm:w-full">
                   <div
                     className="navbar-text hover:text-cyan-400 hover:underline"
                     onClick={() => {
@@ -165,7 +163,7 @@ const CommonContainer = ({ children }) => {
                   </div>
                 </div>
               ) : (
-                <div className="flex flex-row-reverse w-2/5 items-center px-3 text-gray-400 justify-evenly border-r-2 border-white">
+                <div className="flex flex-row-reverse w-2/5 items-center px-3 text-gray-400 justify-evenly sm:border-r-2 border-white max-sm:w-full">
                   <div
                     className="navbar-text hover:text-pink-500"
                     onClick={() => {
@@ -190,55 +188,57 @@ const CommonContainer = ({ children }) => {
             {children}
           </div>
         </div>
-        <div className="sidebar flex justify-between flex-col h-full w-1/6">
-          <div>
-            <div
-              className="logoHomePage w-full bg-inherit flex justify-center items-center"
-              style={{ height: "27.5%" }}
-            >
-              <img src={homePageLogo} alt="Melodize Logo" />
-            </div>
-            <div className="mb-12">
-              <IconText
-                iconName={"material-symbols:home"}
-                iconText={"Home"}
-                active={currentPath === "/" ? true : false}
-              />
-              <IconText
-                iconName={"ri:search-line"}
-                iconText={"Search"}
-                active={currentPath === "/search" ? true : false}
-              />
-              <IconText
-                iconName={"fluent:library-16-regular"}
-                iconText={"Library"}
-                active={currentPath === "/library" ? true : false}
-              />
-            </div>
-            <div className="mt-12">
-              <IconText
-                iconName={"ic:round-add-box"}
-                iconText={"Create Playlist"}
-                active={currentPath === "/createPlaylist" ? true : false}
-                setOpenCreatePlaylistModal={setOpenCreatePlaylistModal}
-              />
-              <IconText
-                iconName={"solar:chat-square-like-bold"}
-                iconText={"Liked Songs"}
-                active={currentPath === "/likedSongs" ? true : false}
-              />
-              {cookie.username ? (
+        {!isSmallDevice && (
+          <div className="sidebar flex justify-between flex-col h-full w-1/6">
+            <div>
+              <div
+                className="logoHomePage w-full bg-inherit flex justify-center items-center"
+                style={{ height: "27.5%" }}
+              >
+                <img src={homePageLogo} alt="Melodize Logo" />
+              </div>
+              <div className="mb-12">
                 <IconText
-                  iconName={"mingcute:music-3-fill"}
-                  iconText={"My Music"}
-                  active={currentPath === "/myMusic" ? true : false}
+                  iconName={"material-symbols:home"}
+                  iconText={"Home"}
+                  active={currentPath === "/" ? true : false}
                 />
-              ) : (
-                <></>
-              )}
+                <IconText
+                  iconName={"ri:search-line"}
+                  iconText={"Search"}
+                  active={currentPath === "/search" ? true : false}
+                />
+                <IconText
+                  iconName={"fluent:library-16-regular"}
+                  iconText={"Library"}
+                  active={currentPath === "/library" ? true : false}
+                />
+              </div>
+              <div className="mt-12">
+                <IconText
+                  iconName={"ic:round-add-box"}
+                  iconText={"Create Playlist"}
+                  active={currentPath === "/createPlaylist" ? true : false}
+                  setOpenCreatePlaylistModal={setOpenCreatePlaylistModal}
+                />
+                <IconText
+                  iconName={"solar:chat-square-like-bold"}
+                  iconText={"Liked Songs"}
+                  active={currentPath === "/likedSongs" ? true : false}
+                />
+                {cookie.username ? (
+                  <IconText
+                    iconName={"mingcute:music-3-fill"}
+                    iconText={"My Music"}
+                    active={currentPath === "/myMusic" ? true : false}
+                  />
+                ) : (
+                  <></>
+                )}
+              </div>
             </div>
           </div>
-        </div>
+        )}
       </div>
       {currentSong ? (
         <div className="music-down-bar flex text-white p-4">
@@ -253,14 +253,16 @@ const CommonContainer = ({ children }) => {
                 })`,
               }}
             ></div>
-            <div className="flex flex-col justify-center">
-              <div className="flex items-center hover:underline cursor-pointer max-[1024px]:text-sm">
-                {currentSong ? currentSong.name : "Name"}
+            {!isSmallDevice && (
+              <div className="flex flex-col justify-center">
+                <div className="flex items-center hover:underline cursor-pointer max-[1024px]:text-sm">
+                  {currentSong ? currentSong.name : "Name"}
+                </div>
+                <div className="text-gray-400 text-sm flex items-center hover:underline cursor-pointer max-[1024px]:text-xs">
+                  {currentSong ? currentSong.artist.username : "Artist"}
+                </div>
               </div>
-              <div className="text-gray-400 text-sm flex items-center hover:underline cursor-pointer max-[1024px]:text-xs">
-                {currentSong ? currentSong.artist.username : "Artist"}
-              </div>
-            </div>
+            )}
           </div>
           <div className="w-2/4 h-full flex flex-col justify-center">
             <div className="flex text-2xl justify-center items-center">
@@ -277,11 +279,7 @@ const CommonContainer = ({ children }) => {
                 }}
               />
               <Icon
-                icon={
-                  !isPaused
-                    ? "icon-park-solid:pause-one"
-                    : "icon-park-solid:play-one"
-                }
+                icon={`icon-park-solid:${!isPaused ? "pause" : "play"}-one`}
                 className="text-3xl text-gray-400 hover:text-white cursor-pointer mx-2.5"
                 onClick={(event) => {
                   event.preventDefault();

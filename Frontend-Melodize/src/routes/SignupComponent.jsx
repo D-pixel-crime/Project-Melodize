@@ -55,7 +55,7 @@ const SignupComponent = () => {
       <div className="logo p-4 border-b-2 border-solid border-red-300 w-full flex justify-center">
         <img src={loginPageLogo} alt="melodize logo" width={"250px"} />
       </div>
-      <div className="inputRegion w-4/12 py-8 flex flex-col items-center justify-evenly">
+      <div className="inputRegion w-4/12 py-8 flex flex-col items-center justify-evenly max-sm:w-5/6">
         <div
           className="font-black mb-7 mt-1 text-3xl"
           style={{ letterSpacing: "1px" }}
@@ -90,7 +90,7 @@ const SignupComponent = () => {
           value={password}
           setValue={setPassword}
         />
-        <div className="w-full flex justify-between space-x-4">
+        <div className="w-full flex max-sm:flex-col justify-between sm:space-x-4">
           <TextInput
             type={"text"}
             label={"First Name"}
@@ -120,7 +120,7 @@ const SignupComponent = () => {
         </div>
         <div className="w-full border-b-2 border-gray-300 mt-8"></div>
         <div className="w-full flex flex-col items-center my-7 justify-between h-24">
-          <h4 className="font-semibold">Already have an account ?</h4>
+          <h4 className="font-semibold">Already have an account?</h4>
           <button
             className="login-signupPage-button w-full font-semibold border-2 border-gray-200 text-lg rounded-3xl"
             onClick={() => {

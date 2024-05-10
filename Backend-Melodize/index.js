@@ -39,7 +39,7 @@ connectToDb();
 //   ExtractJwt = require("passport-jwt").ExtractJwt;
 let opts = {};
 opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
-opts.secretOrKey = "thisKeyIsSupposedToBeSecret";
+opts.secretOrKey = process.env.JWT_SECRET;
 passport.use(
   new JwtStrategy(opts, async (jwt_payload, done) => {
     try {

@@ -36,7 +36,7 @@ const AddSongToPlaylistModal = ({ setAddPlaylistModelOpen }) => {
   return (
     <div className="absolute w-screen h-screen bg-black z-40 bg-opacity-70 text-white">
       <div className="flex flex-col justify-center items-center h-full">
-        <div className="flex justify-end w-1/3 mb-2 text-3xl">
+        <div className="flex justify-end w-1/3 max-sm:w-5/6 mb-2 text-3xl">
           <Icon
             icon="radix-icons:cross-2"
             onClick={() => {
@@ -45,7 +45,7 @@ const AddSongToPlaylistModal = ({ setAddPlaylistModelOpen }) => {
             className="cross-playlist"
           />
         </div>
-        <div className="text-white flex flex-col justify-center items-center w-1/3 border-2 border-white rounded-2xl px-4 py-6 bg-zinc-800">
+        <div className="text-white flex flex-col justify-center items-center w-1/3 max-sm:w-5/6 border-2 border-white rounded-2xl px-4 py-6 bg-zinc-800">
           <div className="flex text-2xl items-center justify-between w-full border-b-2 border-gray-400 pb-1.5">
             <div>Select Playlist</div>
           </div>
@@ -65,7 +65,7 @@ const AddSongToPlaylistModal = ({ setAddPlaylistModelOpen }) => {
                       style={{ backgroundImage: `url(${element.thumbnail})` }}
                       className="h-10 w-10 bg-cover bg-no-repeat bg-center rounded-md"
                     ></div>
-                    <div className="ml-4">{element.name}</div>
+                    <div className="ml-4 max-sm:text-xs">{element.name}</div>
                   </div>
                 );
               })}

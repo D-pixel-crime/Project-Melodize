@@ -75,3 +75,9 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+@layer utilities {
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+}
