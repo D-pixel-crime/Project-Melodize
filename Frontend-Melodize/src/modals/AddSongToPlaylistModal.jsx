@@ -34,7 +34,7 @@ const AddSongToPlaylistModal = ({ setAddPlaylistModelOpen }) => {
   };
 
   return (
-    <div className="absolute w-screen h-screen bg-black z-40 bg-opacity-70 text-white">
+    <div className="absolute w-screen h-screen bg-black z-50 bg-opacity-70 text-white">
       <div className="flex flex-col justify-center items-center h-full">
         <div className="flex justify-end w-1/3 max-sm:w-5/6 mb-2 text-3xl">
           <Icon

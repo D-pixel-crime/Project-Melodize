@@ -21,7 +21,7 @@ const CreatePlaylistModal = ({ setOpenCreatePlaylistModal }) => {
   };
 
   return (
-    <div className="absolute w-screen h-screen bg-black z-40 bg-opacity-70 text-white">
+    <div className="absolute w-screen h-screen bg-black z-50 bg-opacity-70 text-white">
       <div className="flex flex-col justify-center items-center h-full">
         <div className="flex justify-end w-1/3 mb-2 text-3xl max-sm:w-5/6">
           <Icon
@@ -51,7 +51,7 @@ const CreatePlaylistModal = ({ setOpenCreatePlaylistModal }) => {
             />
           </div>
           <button
-            className="text-black text-lg mt-10 hover:bg-cyan-400 rounded-full"
+            className="text-white border border-white text-lg mt-10 hover:bg-cyan-400 rounded-full"
             onClick={(event) => {
               event.preventDefault();
               handleCreate();

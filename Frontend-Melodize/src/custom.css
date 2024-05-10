@@ -55,6 +55,10 @@
     z-index: 20;
 }
 
+.mobile-sidebar {
+    background-color: rgb(34, 34, 37);
+}
+
 .navbar {
     background-color: rgb(34, 34, 37);
     height: 10%;

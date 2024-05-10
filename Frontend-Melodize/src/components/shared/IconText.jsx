@@ -12,7 +12,7 @@ const IconText = ({
     <div
       className={`flex hover:cursor-pointer w-full justify-center items-center text-2xl my-4 ${
         active ? "text-white" : "text-gray-400"
-      } max-[1024px]:text-lg max-[768px]:text-sm`}
+      } max-[1024px]:text-lg max-[768px]:text-sm max-sm:text-2xl`}
       onClick={(event) => {
         event.preventDefault();
         if (iconText === "Home") navigate("/");

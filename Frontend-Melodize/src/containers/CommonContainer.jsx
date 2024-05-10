@@ -11,6 +11,7 @@ import { useLocation } from "react-router-dom";
 import CreatePlaylistModal from "../modals/createPlaylistModal";
 import AddSongToPlaylist from "../modals/AddSongToPlaylistModal";
 import SignOutModal from "../modals/SignOutModal";
+import SmallDeviceSidebar from "../modals/smallDevicesSidebar";
 
 const CommonContainer = ({ children }) => {
   const navigate = useNavigate();
@@ -19,6 +20,7 @@ const CommonContainer = ({ children }) => {
   const [openCreatePlaylistModal, setOpenCreatePlaylistModal] = useState(false);
   const [addPlaylistModalOpen, setAddPlaylistModelOpen] = useState(false);
   const [signoutModalOpen, setSignoutModalOpen] = useState(false);
+  const [openSidebar, setOpenSidebar] = useState(false);
   const {
     currentSong,
     setCurrentSong,
@@ -114,6 +116,12 @@ const CommonContainer = ({ children }) => {
       {addPlaylistModalOpen && (
         <AddSongToPlaylist setAddPlaylistModelOpen={setAddPlaylistModelOpen} />
       )}
+      {openSidebar && (
+        <SmallDeviceSidebar
+          setOpenSidebar={setOpenSidebar}
+          setOpenCreatePlaylistModal={setOpenCreatePlaylistModal}
+        />
+      )}
       {signoutModalOpen && (
         <SignOutModal
           setSignoutModalOpen={setSignoutModalOpen}
@@ -130,7 +138,7 @@ const CommonContainer = ({ children }) => {
             <div
               className={`flex ${
                 !cookie.token ? "w-2/5" : "w-3/5"
-              } items-center text-lg flex-row-reverse justify-end max-[1024px]:text-sm max-[1024px]:w-4/5`}
+              } items-center text-lg flex-row-reverse justify-end max-[1024px]:text-sm max-[1024px]:w-4/5 max-sm:w-full`}
             >
               {!isSmallDevice && (
                 <div
@@ -145,6 +153,15 @@ const CommonContainer = ({ children }) => {
               )}
               {!cookie.token ? (
                 <div className="flex flex-row-reverse w-2/5 items-center px-3 text-gray-400 justify-evenly sm:border-r-2 border-white max-[1024px]:w-2/6 max-sm:w-full">
+                  {isSmallDevice && (
+                    <Icon
+                      icon="material-symbols-light:menu-open"
+                      className="text-4xl"
+                      onClick={() => {
+                        setOpenSidebar(true);
+                      }}
+                    />
+                  )}
                   <div
                     className="navbar-text hover:text-cyan-400 hover:underline"
                     onClick={() => {
@@ -164,6 +181,15 @@ const CommonContainer = ({ children }) => {
                 </div>
               ) : (
                 <div className="flex flex-row-reverse w-2/5 items-center px-3 text-gray-400 justify-evenly sm:border-r-2 border-white max-sm:w-full">
+                  {isSmallDevice && (
+                    <Icon
+                      icon="material-symbols-light:menu-open"
+                      className="text-4xl"
+                      onClick={() => {
+                        setOpenSidebar(true);
+                      }}
+                    />
+                  )}
                   <div
                     className="navbar-text hover:text-pink-500"
                     onClick={() => {
