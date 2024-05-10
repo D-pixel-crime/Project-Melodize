@@ -33,7 +33,6 @@ const SignupComponent = () => {
       formData
     );
     if (res && !res.error) {
-      console.log(res);
       let date = new Date();
       date.setDate(date.getDate() + 30);
       setCookie("token", res.token, {
@@ -45,7 +44,6 @@ const SignupComponent = () => {
       navigate("/");
       return;
     }
-    console.log(res);
     alert("Something went wrong");
     return;
   };

@@ -13,7 +13,6 @@ const UploadSong = () => {
 
   useEffect(() => {
     if (!cookie.token) navigate("/");
-    console.log(window.cloudinary);
   }, []);
 
   const [songName, setSongName] = useState("");
@@ -26,7 +25,6 @@ const UploadSong = () => {
       alert("Could not upload song");
       return;
     }
-    console.log(res);
     navigate("/");
   };
 

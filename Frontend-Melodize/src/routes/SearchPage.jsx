@@ -34,7 +34,6 @@ const SearchPage = () => {
               otherThanLoginPage={true}
               onKeyDown={(event) => {
                 event.preventDefault();
-                console.log(event.target.value);
                 if (event.target.value === "enter") handleSearch();
               }}
             />

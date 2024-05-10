@@ -29,7 +29,6 @@ const AddSongToPlaylistModal = ({ setAddPlaylistModelOpen }) => {
     });
     if (res) {
       setAddPlaylistModelOpen(false);
-      console.log(res);
     }
   };
 

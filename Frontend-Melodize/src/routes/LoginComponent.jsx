@@ -23,7 +23,6 @@ const LoginComponent = () => {
     const formData = { email, password };
     const res = await makeUnauthenticatedPOSTRequest("/auth/login", formData);
     if (res && !res.error) {
-      console.log(res);
       const date = new Date();
       date.setDate(date.getDate() + 30);
       setCookie("token", res.token, { path: "/", expires: date });
