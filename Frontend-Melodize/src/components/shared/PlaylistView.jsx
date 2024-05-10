@@ -1,4 +1,4 @@
-import PlaylistCard from "./PlaylistCard";
+import PlaylistCard from "./PlaylistCard.jsx";
 
 const PlaylistView = ({ title, cardData }) => {
   return (

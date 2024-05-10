@@ -1,10 +1,10 @@
 import { useCookies } from "react-cookie";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import TextInput from "../components/shared/TextInput";
-import CloudinaryUpload from "../components/shared/CloudinaryUpload";
-import { makeAuthenticatedPOSTRequest } from "../utils/serverHelpers";
-import CommonContainer from "../containers/CommonContainer";
+import TextInput from "../components/shared/TextInput.jsx";
+import CloudinaryUpload from "../components/shared/CloudinaryUpload.jsx";
+import { makeAuthenticatedPOSTRequest } from "../utils/serverHelpers.js";
+import CommonContainer from "../containers/CommonContainer.jsx";
 
 const UploadSong = () => {
   const navigate = useNavigate();

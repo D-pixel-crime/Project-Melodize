@@ -1,5 +1,5 @@
-import PlaylistView from "../components/shared/PlaylistView";
-import CommonContainer from "../containers/CommonContainer";
+import PlaylistView from "../components/shared/PlaylistView.jsx";
+import CommonContainer from "../containers/CommonContainer.jsx";
 
 const focusPlaylist = [
   {

@@ -1,17 +1,17 @@
 import { useContext, useLayoutEffect, useRef, useState } from "react";
 import { Howl, Howler } from "howler";
 import { useNavigate } from "react-router-dom";
-import TextWithHover from "../components/shared/TextWithHover";
+import TextWithHover from "../components/shared/TextWithHover.jsx";
 import { useCookies } from "react-cookie";
-import { songContext } from "../contexts/songContext";
-import IconText from "../components/shared/IconText";
+import { songContext } from "../contexts/songContext.js";
+import IconText from "../components/shared/IconText.jsx";
 import { Icon } from "@iconify/react";
 import homePageLogo from "../assets/melodizeLogo.svg";
 import { useLocation } from "react-router-dom";
-import CreatePlaylistModal from "../modals/createPlaylistModal";
-import AddSongToPlaylist from "../modals/AddSongToPlaylistModal";
-import SignOutModal from "../modals/SignOutModal";
-import SmallDeviceSidebar from "../modals/smallDevicesSidebar";
+import CreatePlaylistModal from "../modals/createPlaylistModal.jsx";
+import AddSongToPlaylist from "../modals/AddSongToPlaylistModal.jsx";
+import SignOutModal from "../modals/SignOutModal.jsx";
+import SmallDeviceSidebar from "../modals/smallDevicesSidebar.jsx";
 
 const CommonContainer = ({ children }) => {
   const navigate = useNavigate();

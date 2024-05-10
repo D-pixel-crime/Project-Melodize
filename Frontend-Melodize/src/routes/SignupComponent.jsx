@@ -1,8 +1,8 @@
-import TextInput from "../components/shared/TextInput";
+import TextInput from "../components/shared/TextInput.jsx";
 import loginPageLogo from "../assets/loginPageLogo.svg";
 import { useCookies } from "react-cookie";
 import { useEffect, useState } from "react";
-import { makeUnauthenticatedPOSTRequest } from "../utils/serverHelpers";
+import { makeUnauthenticatedPOSTRequest } from "../utils/serverHelpers.js";
 import { useNavigate } from "react-router-dom";
 
 const SignupComponent = () => {

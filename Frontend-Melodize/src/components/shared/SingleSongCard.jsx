@@ -1,6 +1,6 @@
 import { Icon } from "@iconify/react";
 import { useContext } from "react";
-import { songContext } from "../../contexts/songContext";
+import { songContext } from "../../contexts/songContext.js";
 import animation from "../../Animation - 1711389074547.gif";
 
 const SingleSongCard = ({ name, thumbnail, track, artist, id }) => {

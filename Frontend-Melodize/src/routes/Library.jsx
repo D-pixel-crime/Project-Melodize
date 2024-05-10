@@ -1,9 +1,9 @@
 import { useCookies } from "react-cookie";
-import CommonContainer from "../containers/CommonContainer";
+import CommonContainer from "../containers/CommonContainer.jsx";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { makeAuthenticatedGETRequest } from "../utils/serverHelpers";
-import PlaylistCard from "../components/shared/PlaylistCard";
+import { makeAuthenticatedGETRequest } from "../utils/serverHelpers.js";
+import PlaylistCard from "../components/shared/PlaylistCard.jsx";
 
 const Library = () => {
   const [cookie, setCookie] = useCookies(["token", "username", "userId"]);
