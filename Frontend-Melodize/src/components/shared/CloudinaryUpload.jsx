@@ -1,5 +1,4 @@
 import { openUploadWidget } from "../../utils/CloudinaryService.js";
-import "dotenv/config";
 
 const CloudinaryUpload = ({ setValue }) => {
   const uploadImageWidget = () => {

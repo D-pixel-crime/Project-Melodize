@@ -1,5 +1,4 @@
 import axios from "axios";
-import "dotenv/config";
 
 export const makeUnauthenticatedPOSTRequest = async (route, body) => {
   const { data } = await axios.post(import.meta.BACKEND_URL + route, body, {
