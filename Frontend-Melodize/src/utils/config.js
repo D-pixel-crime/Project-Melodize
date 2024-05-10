@@ -1,1 +1,1 @@
-export const backendURL = "http://localhost:1022";
+export const backendURL = "https://project-melodize.onrender.com";
