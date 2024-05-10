@@ -8,7 +8,7 @@ Melodize is a full-stack web application built using the MERN (MongoDB, Express.
 - **Browse Music**: Explore a vast library of songs, albums, and artists.
 - **Search Functionality**: Quickly find desired songs, albums, or artists using the search feature.
 - **Create Playlists**: Users can create custom playlists to organize their favorite songs.
-- **Playback Controls**: Play, pause, forward, backward, loop, autoplay while listening to music.
+- **Playback Controls**: Play, pause, forward, backward, replay, autoplay while listening to music.
 - **Responsive Design**: The application is optimized for various devices, including desktops, tablets, and mobile phones.
 
 ## Technologies Used
