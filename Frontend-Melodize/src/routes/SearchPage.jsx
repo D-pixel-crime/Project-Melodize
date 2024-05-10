@@ -1,10 +1,10 @@
 import { Suspense, useState } from "react";
-import TextInput from "../components/shared/TextInput.jsx";
-import CommonContainer from "../containers/CommonContainer.jsx";
-import SingleSongCard from "../components/shared/SingleSongCard.jsx";
+import TextInput from "../components/shared/TextInput";
+import CommonContainer from "../containers/CommonContainer";
+import SingleSongCard from "../components/shared/SingleSongCard";
 import { Icon } from "@iconify/react";
-import { makeAuthenticatedGETRequest } from "../utils/serverHelpers.js";
-import Loading from "../components/shared/Loading.jsx";
+import { makeAuthenticatedGETRequest } from "../utils/serverHelpers";
+import Loading from "../components/shared/Loading";
 
 const SearchPage = () => {
   const [query, setQuery] = useState("");

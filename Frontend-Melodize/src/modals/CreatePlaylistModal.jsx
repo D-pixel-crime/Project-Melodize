@@ -1,7 +1,7 @@
 import { Icon } from "@iconify/react";
-import TextInput from "../components/shared/TextInput.jsx";
+import TextInput from "../components/shared/TextInput";
 import { useState } from "react";
-import { makeAuthenticatedPOSTRequest } from "../utils/serverHelpers.js";
+import { makeAuthenticatedPOSTRequest } from "../utils/serverHelpers";
 
 const CreatePlaylistModal = ({ setOpenCreatePlaylistModal }) => {
   const [name, setName] = useState("");

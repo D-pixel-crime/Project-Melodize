@@ -1,5 +1,5 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
-import IconText from "../components/shared/IconText.jsx";
+import IconText from "../components/shared/IconText";
 import { useCookies } from "react-cookie";
 import homePageLogo from "../assets/melodizeLogo.svg";
 import { useLocation, useNavigate } from "react-router-dom";

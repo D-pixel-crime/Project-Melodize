@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
-import { songContext } from "../contexts/songContext.js";
+import { songContext } from "../contexts/songContext";
 
 const SignOutModal = ({ setSignoutModalOpen, date, changeSong }) => {
   const navigate = useNavigate();

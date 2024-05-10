@@ -3,8 +3,8 @@ import { useContext, useEffect, useState } from "react";
 import {
   makeAuthenticatedGETRequest,
   makeAuthenticatedPOSTRequest,
-} from "../utils/serverHelpers.js";
-import { songContext } from "../contexts/songContext.js";
+} from "../utils/serverHelpers";
+import { songContext } from "../contexts/songContext";
 
 const AddSongToPlaylistModal = ({ setAddPlaylistModelOpen }) => {
   const [playlists, setPlaylists] = useState([]);

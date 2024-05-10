@@ -1,7 +1,7 @@
-import SingleSongCard from "../components/shared/SingleSongCard.jsx";
+import SingleSongCard from "../components/shared/SingleSongCard";
 import { useEffect, useState } from "react";
-import { makeAuthenticatedGETRequest } from "../utils/serverHelpers.js";
-import CommonContainer from "../containers/CommonContainer.jsx";
+import { makeAuthenticatedGETRequest } from "../utils/serverHelpers";
+import CommonContainer from "../containers/CommonContainer";
 import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 

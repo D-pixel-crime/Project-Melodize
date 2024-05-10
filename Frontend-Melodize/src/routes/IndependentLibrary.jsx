@@ -1,10 +1,10 @@
 import { useParams } from "react-router-dom";
-import CommonContainer from "../containers/CommonContainer.jsx";
+import CommonContainer from "../containers/CommonContainer";
 import { Suspense, useContext, useEffect, useState } from "react";
-import { makeAuthenticatedGETRequest } from "../utils/serverHelpers.js";
-import SingleSongCard from "../components/shared/SingleSongCard.jsx";
-import { songContext } from "../contexts/songContext.js";
-import Loading from "../components/shared/Loading.jsx";
+import { makeAuthenticatedGETRequest } from "../utils/serverHelpers";
+import SingleSongCard from "../components/shared/SingleSongCard";
+import { songContext } from "../contexts/songContext";
+import Loading from "../components/shared/Loading";
 
 const IndependentLibrary = () => {
   const { id } = useParams();
