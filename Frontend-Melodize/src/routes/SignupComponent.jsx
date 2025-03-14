@@ -4,6 +4,7 @@ import { useCookies } from "react-cookie";
 import { useEffect, useState } from "react";
 import { makeUnauthenticatedPOSTRequest } from "../utils/serverHelpers";
 import { useNavigate } from "react-router-dom";
+import { Bars } from "react-loader-spinner";
 
 const SignupComponent = () => {
   useEffect(() => {
@@ -20,11 +21,14 @@ const SignupComponent = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [cookie, setCookie] = useCookies(["token", "username", "userId"]);
+  const [isSignup, setIsSignup] = useState(false);
   const navigate = useNavigate();
 
   const signUp = async () => {
+    setIsSignup(true);
     if (email !== confirmEmail) {
       alert("Email and Confirm-email not same, plz check again");
+      setIsSignup(false);
       return;
     }
     const formData = { username, email, password, firstName, lastName };
@@ -41,10 +45,12 @@ const SignupComponent = () => {
       });
       setCookie("username", res.username, { path: "/", expires: date });
       setCookie("userId", res._id, { path: "/", expires: date });
+      setIsSignup(false);
       navigate("/");
       return;
     }
     alert("Something went wrong");
+    setIsSignup(false);
     return;
   };
 
@@ -105,16 +111,28 @@ const SignupComponent = () => {
           />
         </div>
         <div className="w-full flex justify-center mt-7 pt-2">
-          <button
-            className="signup-button w-full font-semibold border-2 border-gray-200 rounded-3xl hover:bg-blue-400"
-            style={{ transition: "0.5s" }}
-            onClick={(event) => {
-              event.preventDefault();
-              signUp();
-            }}
-          >
-            SIGN UP
-          </button>
+          {isSignup ? (
+            <Bars
+              height="80"
+              width="80"
+              color="skyblue"
+              ariaLabel="bars-loading"
+              wrapperStyle={{}}
+              wrapperClass=""
+              visible={true}
+            />
+          ) : (
+            <button
+              className="signup-button w-full font-semibold border-2 border-gray-200 rounded-3xl hover:bg-blue-400"
+              style={{ transition: "0.5s" }}
+              onClick={(event) => {
+                event.preventDefault();
+                signUp();
+              }}
+            >
+              SIGN UP
+            </button>
+          )}
         </div>
         <div className="w-full border-b-2 border-gray-300 mt-8"></div>
         <div className="w-full flex flex-col items-center my-7 justify-between h-24">

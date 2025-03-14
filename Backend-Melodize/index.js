@@ -19,12 +19,10 @@ app.use(cors());
 app.use(morgan("short"));
 app.use(express.json());
 
-let pass = encodeURIComponent(process.env.MONGO_PASSWORD);
-
 const connectToDb = async () => {
   try {
     const resp = await mongoose.connect(
-      `mongodb+srv://newcriminal:${pass}@darkdementor.rhallfz.mongodb.net/?retryWrites=true&w=majority`,
+      process.env.MONGO_URI,
       {}
     );
     console.log("Connected to Mongo!");

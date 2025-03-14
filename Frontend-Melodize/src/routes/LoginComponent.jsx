@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import { useEffect, useState } from "react";
 import { makeUnauthenticatedPOSTRequest } from "../utils/serverHelpers";
+import { Bars } from "react-loader-spinner";
 
 const LoginComponent = () => {
   useEffect(() => {
@@ -15,11 +16,12 @@ const LoginComponent = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const [isLogin, setIsLogin] = useState(false);
   const navigate = useNavigate();
   const [cookie, setCookie] = useCookies(["token", "username", "userId"]);
 
   const handleLogin = async () => {
+    setIsLogin(true);
     const formData = { email, password };
     const res = await makeUnauthenticatedPOSTRequest("/auth/login", formData);
     if (res && !res.error) {
@@ -29,10 +31,12 @@ const LoginComponent = () => {
       setCookie("username", res.username, { path: "/", expires: date });
       setCookie("userId", res._id, { path: "/", expires: date });
       alert("Successfully logged in.");
+      setIsLogin(false);
       navigate("/");
       return;
     }
     alert("Failed to log in.");
+    setIsLogin(false);
     return;
   };
 
@@ -60,15 +64,27 @@ const LoginComponent = () => {
           setValue={setPassword}
         />
         <div className="w-full flex justify-end mt-5 pt-2">
-          <button
-            className="login-button font-semibold border-2 border-gray-200 rounded-3xl"
-            onClick={(event) => {
-              event.preventDefault();
-              handleLogin();
-            }}
-          >
-            LOG IN
-          </button>
+          {isLogin ? (
+            <Bars
+              height="80"
+              width="80"
+              color="#4fa94d"
+              ariaLabel="bars-loading"
+              wrapperStyle={{}}
+              wrapperClass=""
+              visible={true}
+            />
+          ) : (
+            <button
+              className="login-button font-semibold border-2 border-gray-200 rounded-3xl"
+              onClick={(event) => {
+                event.preventDefault();
+                handleLogin();
+              }}
+            >
+              LOG IN
+            </button>
+          )}
         </div>
         <div className="w-full border-b-2 border-gray-300 mt-8"></div>
         <div className="w-full flex flex-col items-center my-7 justify-between h-24">

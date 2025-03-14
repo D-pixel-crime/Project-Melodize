@@ -1,15 +1,11 @@
-import {
-  cloudinary_cloud_name,
-  cloudinary_upload_preset,
-} from "../../config.js";
 import { openUploadWidget } from "../../utils/CloudinaryService.js";
 
 const CloudinaryUpload = ({ setValue }) => {
   const uploadImageWidget = () => {
     let myUploadWidget = openUploadWidget(
       {
-        cloudName: cloudinary_cloud_name,
-        uploadPreset: cloudinary_upload_preset,
+        cloudName: import.meta.env.VITE_CLOUDINARY_CLOUDNAME,
+        uploadPreset: import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET,
         sources: ["local"],
       },
       function (error, result) {

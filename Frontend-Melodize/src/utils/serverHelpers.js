@@ -1,5 +1,6 @@
 import axios from "axios";
-import { backendURL } from "./config";
+
+const backendURL = import.meta.env.VITE_BACKEND_URI;
 
 export const makeUnauthenticatedPOSTRequest = async (route, body) => {
   const { data } = await axios.post(backendURL + route, body, {
